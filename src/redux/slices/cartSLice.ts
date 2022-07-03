@@ -8,16 +8,18 @@ export interface ProductCartInterface {
     count?: number;
 }
 
-interface CardStateInterface {
+interface CartStateInterface {
+    total: number,
     products: ProductCartInterface[]
 }
 
-const initialState: CardStateInterface = {
+const initialState: CartStateInterface = {
+    total: 0,
     products: [],
 }
 
-export const cardSlice = createSlice({
-    name: 'card',
+export const cartSlice = createSlice({
+    name: 'cart',
     initialState,
     reducers: {
         setProducts: (state, action: PayloadAction<ProductCartInterface[]>) => {
@@ -33,6 +35,8 @@ export const cardSlice = createSlice({
                     count: product.count ? product.count + 1 : 0,
                 };
 
+                state.total += 1;
+
                 return state;
             }
             action.payload.count = 1;
@@ -46,8 +50,8 @@ export const cardSlice = createSlice({
     },
 })
 
-export const { setProducts, addProduct } = cardSlice.actions
+export const { setProducts, addProduct } = cartSlice.actions
 
-export const selectProducts = (state: RootState) => state.card.products
+export const selectCart = (state: RootState) => state.cart;
 
-export default cardSlice.reducer
+export default cartSlice.reducer

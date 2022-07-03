@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { PostsInterface } from "../interfaces";
 import { PostItem } from "./PostItem";
 import { useAppDispatch } from '../../../redux/hooks'
-import { addProduct } from '../../../redux/slices/cardSLice'
+import { addProduct } from '../../../redux/slices/cartSLice'
 
 
 interface Props {
