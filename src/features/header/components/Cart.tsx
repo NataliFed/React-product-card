@@ -18,9 +18,13 @@ export const Cart = () => {
                 position: absolute;
                 right: 0;
             `}>
-                {products.map((product) => <p key={product}>{product}</p>)}
+                {products.map(({ id, title, count }) =>
+                    <p key={id}>
+                        {title} - {count}
+                    </p>
+                )}
             </div>
         </div>
-    )
+    );
 
 }

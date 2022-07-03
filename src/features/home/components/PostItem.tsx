@@ -5,11 +5,14 @@ import { PostsInterface } from "../interfaces"
 
 
 interface Props {
-    product: PostsInterface
+    product: PostsInterface;
+    onAddProduct: (product: PostsInterface) => void
 }
 
-export const PostItem = ({ product: { id, title, description, price, thumbnail } }: Props) => {
-    return (
+export const PostItem = ({ product, onAddProduct }: Props) => {
+    const { id, title, description, price, thumbnail } = product;
+
+    return(
         <div css={css`
                     max-width: 200px;
                     margin-bottom: 10px;
@@ -34,6 +37,7 @@ export const PostItem = ({ product: { id, title, description, price, thumbnail }
                 overflow: hidden;
                 margin-top: 10px;
             `}>{description}</div>
+            <button onClick={() => onAddProduct(product)}>Add to card</button>
         </div>
     )
 }

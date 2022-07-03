@@ -5,18 +5,26 @@ import { usePost } from "./hooks";
 
 
 export const PostFeature = () => {
-    
-    const {body, title, thumbnail, price} = usePost();
+
+    const { description, title, thumbnail, price } = usePost();
 
     return (
-    <div>
-        <p>{thumbnail}</p>
-        <h1 css={css`
-       text-align: center;
-    `}>{title}</h1>
-        <p>{body}</p>
-        <p>{price}</p>
-        <Link to='/'>Back to home page</Link>
-    </div>
-);
+        <div>
+            <h1 css={css`
+                text-align: center;
+            `}>
+                {title}
+            </h1>
+            <img src={thumbnail} alt="" css={css`
+                width: 100%;
+            `}/>
+
+            <p>{description}</p>
+            <p css={css`
+                text-decoration: underline;
+
+            `}>{price} $</p>
+            <Link to='/'>Back to home page</Link>
+        </div>
+    );
 };
